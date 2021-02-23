@@ -9,12 +9,12 @@ import (
 	"strings"
 )
 
-func solve(meal_cost float64, tip_percent int32, tax_percent int32) int32 {
-	tip := int32(meal_cost) * tip_percent / 100
-	tax := int32(meal_cost) * tax_percent / 100
-	total_cost := int32(meal_cost) + tip + tax + 1
+func solve(meal_cost float64, tip_percent int32, tax_percent int32) int {
+	tip := meal_cost * float64(tip_percent) / 100
+	tax := meal_cost * float64(tax_percent) / 100
+	total_cost := meal_cost + tip + tax
 
-	return total_cost
+	return int(total_cost+.5)
 }
 
 func main() {
@@ -31,7 +31,7 @@ func main() {
 	checkError(err)
 	tax_percent := int32(tax_percentTemp)
 
-	fmt.Printf("%d", solve(meal_cost, tip_percent, tax_percent))
+	fmt.Printf("%v", solve(meal_cost, tip_percent, tax_percent))
 }
 
 func readLine(reader *bufio.Reader) string {
