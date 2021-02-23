@@ -9,14 +9,6 @@ import (
 	"strings"
 )
 
-func solve(meal_cost float64, tip_percent int32, tax_percent int32) int {
-	tip := meal_cost * float64(tip_percent) / 100
-	tax := meal_cost * float64(tax_percent) / 100
-	total_cost := meal_cost + tip + tax
-
-	return int(total_cost+.5)
-}
-
 func main() {
 	reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
 
@@ -47,4 +39,12 @@ func checkError(err error) {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func solve(meal_cost float64, tip_percent int32, tax_percent int32) int {
+	tip := meal_cost * float64(tip_percent) / 100
+	tax := meal_cost * float64(tax_percent) / 100
+	total_cost := meal_cost + tip + tax
+
+	return int(total_cost + .5)
 }
